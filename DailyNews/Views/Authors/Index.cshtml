@@ -1,0 +1,27 @@
+@model IEnumerable<DailyNews.Models.Author>
+
+@{
+    ViewData["Title"] = "نویسندگان / تیم پروژه";
+}
+
+<div class="container my-5">
+    <h1 class="text-center mb-5">تیم سازندگان پروژه</h1>
+    
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        @foreach (var author in Model)
+        {
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    @if (!string.IsNullOrEmpty(author.ImageUrl))
+                    {
+                        <img src="@author.ImageUrl" class="card-img-top rounded-circle mx-auto d-block mt-3" alt="@author.Name" style="width: 150px; height: 150px; object-fit: cover;">
+                    }
+                    <div class="card-body text-center">
+                        <h5 class="card-title">@author.Name</h5>
+                        <p class="card-text text-muted">@author.Bio</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

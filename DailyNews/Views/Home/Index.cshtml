@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "خانه";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container my-4">
+    <h1 class="text-center mb-4">آخرین اخبار</h1>
+    
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var news in Model)
+        {
+            <div class="col">
+                <div class="card h-100">
+                    @if (!string.IsNullOrEmpty(news.ImageUrl))
+                    {
+                        <img src="@news.ImageUrl" class="card-img-top" alt="@news.Title" style="height: 200px; object-fit: cover;">
+                    }
+                    <div class="card-body">
+                        <h5 class="card-title">@news.Title</h5>
+                        <p class="card-text text-muted small">
+                            @news.Category.Name • توسط @news.Author.Name • @news.PublishDate.ToString("dd MMM yyyy")
+                        </p>
+                        <p class="card-text">@(news.Content.Length > 150 ? news.Content.Substring(0, 150) + "..." : news.Content)</p>
+                    </div>
+                    <div class="card-footer">
+                        <a asp-action="Details" asp-route-id="@news.Id" class="btn btn-primary">بخوانید</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,26 @@
+@model DailyNews.Models.News
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="container my-5">
+    <h1 class="mb-4">@Model.Title</h1>
+    
+    <div class="text-muted mb-4">
+        <span>@Model.Category.Name</span> • 
+        <span>توسط @Model.Author.Name</span> • 
+        <span>@Model.PublishDate.ToString("dd MMMM yyyy - HH:mm")</span>
+    </div>
+
+    @if (!string.IsNullOrEmpty(Model.ImageUrl))
+    {
+        <img src="@Model.ImageUrl" class="img-fluid mb-4 rounded" alt="@Model.Title">
+    }
+
+    <div class="lead">
+        @Html.Raw(Model.Content)  <!-- برای نمایش HTML محتوا -->
+    </div>
+
+    <a asp-action="Index" class="btn btn-secondary mt-4">بازگشت به صفحه اصلی</a>
+</div>
