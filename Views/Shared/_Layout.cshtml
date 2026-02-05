@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - DailyNews</title>
+
+    <!-- Bootstrap اصلی -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- آیکون‌های بوت‌استرپ -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- فونت فارسی زیبا (اختیاری اما توصیه می‌شود) -->
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* تم اصلی آسمان شب */
+        body {
+            font-family: 'Vazirmatn', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(180deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            color: #e0e0ff;
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        /* کارت‌های اخبار کمی روشن‌تر برای جدا شدن */
+        .card {
+            background-color: rgba(30, 30, 60, 0.85);
+            border: 1px solid rgba(100, 100, 255, 0.3);
+            color: #f0f0ff;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(100, 100, 255, 0.4);
+        }
+
+        .card-title {
+            color: #a0a0ff;
+        }
+
+        /* متن‌های تیره روی کارت‌ها خواناتر بشن */
+        .text-muted {
+            color: #b0b0ff !important;
+        }
+
+        /* هدر و فوتر تیره‌تر و ستاره‌ای */
+        .navbar-dark {
+            background-color: rgba(10, 5, 40, 0.95) !important;
+            backdrop-filter: blur(8px);
+        }
+
+        footer {
+            background: rgba(10, 5, 40, 0.95);
+            border-top: 1px solid rgba(100, 100, 255, 0.2);
+        }
+
+        /* لینک‌ها در تم شب */
+        a {
+            color: #a0a0ff;
+        }
+
+        a:hover {
+            color: #d0d0ff;
+        }
+    </style>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand fw-bold" asp-controller="Home" asp-action="Index">DailyNews</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">خانه</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="About">درباره ما</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Privacy">حریم خصوصی</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main" class="flex-grow-1 container my-4">
+        @RenderBody()
+    </main>
+
+    <footer class="text-white text-center py-4 mt-auto">
+        <div class="container">
+            <p class="mb-1">
+                © ۲۰۲۶ - DailyNews - ساخته شده توسط 
+                <strong>حسین جعفری شارمی</strong> (ورودی ۱۴۰۰) و 
+                <strong>معین آقائی کوهی</strong> (ورودی ۱۳۹۸)
+            </p>
+            <p class="mb-0 small">
+                <a asp-controller="Home" asp-action="Privacy" class="text-white me-3">حریم خصوصی</a> |
+                <a asp-controller="Home" asp-action="About" class="text-white">درباره ما</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
