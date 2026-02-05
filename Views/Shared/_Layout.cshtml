@@ -41,12 +41,10 @@
             color: #a0a0ff;
         }
 
-        /* متن‌های تیره روی کارت‌ها خواناتر بشن */
         .text-muted {
             color: #b0b0ff !important;
         }
 
-        /* هدر و فوتر تیره‌تر و ستاره‌ای */
         .navbar-dark {
             background-color: rgba(10, 5, 40, 0.95) !important;
             backdrop-filter: blur(8px);
@@ -56,7 +54,15 @@
             background: rgba(10, 5, 40, 0.95);
             border-top: 1px solid rgba(100, 100, 255, 0.2);
         }
-
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: url('https://www.transparenttextures.com/patterns/stardust.png');
+            opacity: 0.1;
+            pointer-events: none;
+            z-index: -1;
+        }
         /* لینک‌ها در تم شب */
         a {
             color: #a0a0ff;
